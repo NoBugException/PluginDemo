@@ -1,0 +1,24 @@
+apply plugin: 'groovy'
+apply plugin: "maven"
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = 'com.nobug'
+            pom.artifactId = 'plugintest'
+            pom.version = 1.0
+            // maven本地仓库的目录
+            repository(url: uri('../PluginTest'))
+        }
+    }
+}
